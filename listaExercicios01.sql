@@ -74,3 +74,11 @@ RIGHT JOIN alunos ON matriculas.aluno_id = alunos.id;
 SELECT alunos.nome, matriculas.curso
 FROM alunos
 INNER JOIN matriculas ON alunos.id = matriculas.aluno_id;
+
+--16
+SELECT autores.nome, COUNT(livros.id) AS total_de_livros
+FROM autores
+LEFT JOIN livros ON autores.id = livros.autor_id
+GROUP BY autores.nome
+ORDER BY total_de_livros DESC
+LIMIT 1;
