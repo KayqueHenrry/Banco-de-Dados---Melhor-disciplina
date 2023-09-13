@@ -31,7 +31,13 @@ SELECT curso, COUNT(aluno_id) AS total_de_alunos
 FROM matriculas
 GROUP BY curso;
 
---8
+--08
 SELECT produto, AVG(receita) AS media_de_receita
 FROM vendas
 GROUP BY produto;
+
+--09
+SELECT produto, SUM(receita) AS receita_total
+FROM vendas
+GROUP BY produto
+HAVING SUM(receita) > 10000;
