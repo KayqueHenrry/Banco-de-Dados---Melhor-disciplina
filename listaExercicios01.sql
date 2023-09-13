@@ -86,3 +86,10 @@ LIMIT 1;
 --17
 SELECT produto, MIN(receita) AS menor_receita
 FROM vendas;
+
+--18
+SELECT autores.nome, SUM(vendas.receita) AS receita_total
+FROM autores
+LEFT JOIN livros ON autores.id = livros.autor_id
+LEFT JOIN vendas ON livros.id = vendas.produto
+GROUP BY autores.nome;
