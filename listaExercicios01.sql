@@ -1,3 +1,4 @@
+USE aula_db_exemplos;
 
 --01
 select titulos from livros;
