@@ -1,3 +1,2 @@
-use aula_db_exemplos;
+--01
 select titulos from livros;
-select nomes from autores where nascimento < 1900;
