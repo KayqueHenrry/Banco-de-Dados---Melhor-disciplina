@@ -29,3 +29,11 @@ BEGIN
     CALL sp_ContarLivrosPorCategoria(categoriaNome, total);
     SET possuiLivros = (total > 0);
 END;
+
+--Ex. 05
+CREATE PROCEDURE sp_LivrosAteAno(IN anoLimite INT)
+BEGIN
+    SELECT Titulo
+    FROM Livro
+    WHERE Ano_Publicacao <= anoLimite;
+END;
