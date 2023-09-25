@@ -1,4 +1,5 @@
+-- Ex. 1
 CREATE PROCEDURE sp_ListarAutores()
 BEGIN
-    SELECT * FROM Autor;
+SELECT * FROM Autor;
 END;
