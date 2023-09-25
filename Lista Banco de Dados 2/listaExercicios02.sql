@@ -90,3 +90,11 @@ BEGIN
         SELECT 'Livro adicionado com sucesso.';
     END IF;
 END;
+
+--Ex. 08
+CREATE PROCEDURE sp_AutorMaisAntigo()
+BEGIN
+  SELECT Nome, Sobrenome
+  FROM Autor
+  WHERE Data_Nascimento = (SELECT MIN(Data_Nascimento) FROM Autor);
+END;
