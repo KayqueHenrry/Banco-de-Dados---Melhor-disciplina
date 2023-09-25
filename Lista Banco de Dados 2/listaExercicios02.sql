@@ -21,3 +21,11 @@ BEGIN
     JOIN Categoria ON Livro.Categoria_ID = Categoria.Categoria_ID
     WHERE Categoria.Nome = categoriaNome;
 END;
+
+--Ex. 04
+CREATE PROCEDURE sp_VerificarLivrosCategoria(IN categoriaNome VARCHAR(100), OUT possuiLivros BOOLEAN)
+BEGIN
+    DECLARE total INT;
+    CALL sp_ContarLivrosPorCategoria(categoriaNome, total);
+    SET possuiLivros = (total > 0);
+END;
