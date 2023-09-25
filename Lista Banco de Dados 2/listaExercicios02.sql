@@ -98,3 +98,10 @@ BEGIN
   FROM Autor
   WHERE Data_Nascimento = (SELECT MIN(Data_Nascimento) FROM Autor);
 END;
+
+--Ex. 09
+CREATE PROCEDURE sp_ListarAutores()
+BEGIN
+  -- Esta stored procedure lista todos os autores no banco de dados.
+  SELECT * FROM Autor;
+END;
