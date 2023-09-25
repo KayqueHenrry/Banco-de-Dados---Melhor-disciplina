@@ -25,15 +25,11 @@ END;
 --Ex. 04
 CREATE PROCEDURE sp_VerificarLivrosCategoria(IN categoriaNome VARCHAR(100), OUT possuiLivros BOOLEAN)
 BEGIN
-    DECLARE total INT;
-    CALL sp_ContarLivrosPorCategoria(categoriaNome, total);
-    SET possuiLivros = (total > 0);
-END;
-
---Ex. 05
-CREATE PROCEDURE sp_LivrosAteAno(IN anoLimite INT)
-BEGIN
-    SELECT Titulo
-    FROM Livro
-    WHERE Ano_Publicacao <= anoLimite;
+    DECLARE contador INT;
+    CALL sp_ContarLivrosPorCategoria(categoriaNome, contador);
+    IF contador > 0 THEN
+        SET possuiLivros = TRUE;
+    ELSE
+        SET possuiLivros = FALSE;
+    END IF;
 END;
