@@ -67,3 +67,26 @@ BEGIN
     
     CLOSE cursorLivros;
 END;
+
+--Ex. 07
+CREATE PROCEDURE sp_AdicionarLivro(IN tituloLivro VARCHAR(255), IN editoraID INT, IN anoPublicacao INT, IN numeroPaginas INT, IN categoriaID INT)
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SELECT 'Erro: Não foi possível adicionar o livro devido a um erro no banco de dados.';
+    END;
+    
+    START TRANSACTION;
+    
+    -- Verificar se o livro já existe pelo título
+    IF (SELECT COUNT(*) FROM Livro WHERE Titulo = tituloLivro) > 0 THEN
+        ROLLBACK;
+        SELECT 'Erro: Já existe um livro com o mesmo título.';
+    ELSE
+        INSERT INTO Livro (Titulo, Editora_ID, Ano_Publicacao, Numero_Paginas, Categoria_ID)
+        VALUES (tituloLivro, editoraID, anoPublicacao, numeroPaginas, categoriaID);
+        COMMIT;
+        SELECT 'Livro adicionado com sucesso.';
+    END IF;
+END;
