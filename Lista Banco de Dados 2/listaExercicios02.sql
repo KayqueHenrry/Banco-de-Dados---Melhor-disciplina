@@ -33,3 +33,11 @@ BEGIN
         SET possuiLivros = FALSE;
     END IF;
 END;
+
+-- Ex.05
+CREATE PROCEDURE sp_LivrosAteAno(IN anoPublicacao INT)
+BEGIN
+    SELECT Titulo
+    FROM Livro
+    WHERE Ano_Publicacao <= anoPublicacao;
+END;
