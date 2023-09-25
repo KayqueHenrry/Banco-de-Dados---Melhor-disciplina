@@ -13,3 +13,11 @@ BEGIN
     WHERE Categoria.Nome = categoriaNome;
 END;
 
+-- Ex. 03
+CREATE PROCEDURE sp_ContarLivrosPorCategoria(IN categoriaNome VARCHAR(100), OUT totalLivros INT)
+BEGIN
+    SELECT COUNT(*) INTO totalLivros
+    FROM Livro
+    JOIN Categoria ON Livro.Categoria_ID = Categoria.Categoria_ID
+    WHERE Categoria.Nome = categoriaNome;
+END;
